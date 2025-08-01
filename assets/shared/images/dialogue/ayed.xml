@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-16"?>
+<TextureAtlas imagePath="ayed.png">
+    	<SubTexture name="Confused0000" x="0" y="0" width="459" height="446" frameX="-1" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0001" x="0" y="0" width="459" height="446" frameX="-1" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0002" x="459" y="0" width="458" height="439" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0003" x="459" y="0" width="458" height="439" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0004" x="917" y="0" width="459" height="441" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0005" x="917" y="0" width="459" height="441" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0006" x="1376" y="0" width="459" height="443" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0007" x="1376" y="0" width="459" height="443" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0008" x="0" y="446" width="459" height="445" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0009" x="0" y="446" width="459" height="445" frameX="0" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0010" x="0" y="0" width="459" height="446" frameX="-1" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="Confused0011" x="0" y="0" width="459" height="446" frameX="-1" frameY="0" frameWidth="460" frameHeight="446"/>
+	<SubTexture name="defaultTalk0000" x="459" y="446" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0001" x="459" y="446" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0002" x="917" y="446" width="459" height="431" frameX="0" frameY="0" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0003" x="917" y="446" width="459" height="431" frameX="0" frameY="0" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0004" x="1376" y="446" width="459" height="430" frameX="0" frameY="-1" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0005" x="1376" y="446" width="459" height="430" frameX="0" frameY="-1" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0006" x="0" y="891" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0007" x="0" y="891" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0008" x="458" y="891" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0009" x="458" y="891" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0010" x="459" y="446" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+	<SubTexture name="defaultTalk0011" x="459" y="446" width="458" height="430" frameX="-1" frameY="-2" frameWidth="459" frameHeight="432"/>
+</TextureAtlas>

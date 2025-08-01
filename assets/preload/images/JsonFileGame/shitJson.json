@@ -1,0 +1,11 @@
+{
+    "logoFx": 200,
+    "logoFy": 280,
+    "secondItemX": 100,
+    "secondItemY": 100,
+    "threeItemX": 300,
+    "threeItemY": 300,
+    "fourItemX": 500,
+    "fourItemY": 500,
+    "visibleMouse": true
+}

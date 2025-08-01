@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: AyedEngineBuild
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  buildWindows:
+    runs-on: windows-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4.1.7
+
+      - uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.0
+      # Runs a set of commands using the runners shell
+      - name: Install lix
+        run: npm i lix -g
+      - name: Run lix
+        run: npx lix download
+      # clean stdgo
+      - name: Clean stdgo
+        run: npx haxe --run Run clean
+      - name: Create vendor
+        run: go mod vendor
+      - name: Install Haxelib
+        run: |
+          haxelib setup C:/haxelib
+          lix install haxelib:hxcpp#4.2.1
+          lix install haxelib:flixel-ui#2.4.0
+          lix install haxelib:flixel#4.11.0
+          lix install haxelib:flixel-addons#2.11.0
+          lix install haxelib:openfl#9.2.1
+          lix install haxelib:lime#8.0.0
+          lix install haxelib:hxCodec#2.5.1
+          haxelib git linc_luajit https://github.com/nebulazorua/linc_luajit
+          haxelib git hscript-ex https://github.com/ianharrigan/hscript-ex
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+          lix list haxelib
+        shell: cmd
+      - name: Create Version Tag
+        run: echo "${{github.run_id}}" > VERSION
+      - name: Compile
+        run: haxelib run lime build windows --app-version="4.0.0-${{ github.run_id}}"  -D officialBuild
+      - name: Publish Artifact
+        uses: actions/upload-artifact@v4.3.4
+        with:
+          name: Build
+          path: export/release/windows/bin

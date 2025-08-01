@@ -1,0 +1,22 @@
+{
+	"songs": [
+		["Tutorial", "gf", [165, 0, 77]],
+		["tutorial-ayedMix", "gf", [165, 0, 77]]
+	],
+
+	"weekCharacters": [
+		"",
+		"bf",
+		"gf"
+	],
+	"weekBackground": "stage",
+
+	"difficulties": "Normal",
+	"storyName": "",
+	"weekBefore": "tutorial",
+	"weekName": "Tutorial",
+	"startUnlocked": true,
+
+	"hideStoryMode": false,
+	"hideFreeplay": false
+}
