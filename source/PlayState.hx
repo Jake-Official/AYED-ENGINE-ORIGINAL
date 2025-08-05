@@ -1299,7 +1299,7 @@ class PlayState extends MusicBeatState
 		textShit.setFormat("VCR OSD Mono", 32);
 		textShit.color = FlxColor.WHITE;
 		textShit.cameras = [camHUD];
-		textShit.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
+		// textShit.sounds = [FlxG.sound.load(Paths.sound('pixelText'), 0.6)];
 		add(textShit);
 
 		var whoWill:String = "";
@@ -2722,15 +2722,7 @@ class PlayState extends MusicBeatState
 
 		vocals.pitch = playbackRate;
 		FlxG.sound.list.add(vocals);
-		#if html5
-		OpenFlAssets.loadSound(Paths.inst(PlayState.SONG.song)).then(function(inst:Sound) {
-			var instSound = new FlxSound();
-			instSound.loadEmbedded(inst, false, false);
-			FlxG.sound.list.add(instSound);
-		});
-		#else
 		FlxG.sound.list.add(new FlxSound().loadEmbedded(Paths.inst(PlayState.SONG.song)));
-		#end
 
 		notes = new FlxTypedGroup<Note>();
 		add(notes);

@@ -115,11 +115,11 @@ class MainMenuState extends MusicBeatState
 		#end
 		debugKeys = ClientPrefs.copyKey(ClientPrefs.keyBinds.get('debug_1'));
 
-		if(ClientPrefs.hasBeated){
+		#if web
 			menushittyList = ['freeplay', 'credits', 'options', 'browser'];
-		}else{
+		#elseif desktop
 			menushittyList = ['freeplay', 'credits', 'options'];
-		}
+		#end
 
 		camGame = new FlxCamera();
 		camAchievement = new FlxCamera();
@@ -209,13 +209,7 @@ class MainMenuState extends MusicBeatState
 			//menuItem.setGraphicSize(Std.int(menuItem.width * 0.58));
 			menuItem.updateHitbox();
 
-			if(FlxG.mouse.overlaps(menuItem)){
-				FlxG.mouse.load(("assets/images/input/overlapsCursor.png"), 1);
-			}else{
-				FlxG.mouse.load(("assets/images/input/cursor.png"), 1);
-			}
-
-			if(!ClientPrefs.hasBeated){
+			#if desktop
 				switch(menushittyList[i]){
 					case "freeplay":
 						menuItem.setPosition(shitJson.secondItemX, shitJson.secondItemY);
@@ -224,7 +218,7 @@ class MainMenuState extends MusicBeatState
 					case "options":
 						menuItem.setPosition(shitJson.fourItemX, shitJson.fourItemY);
 				}				
-			}else{
+			#elseif web
 				switch(menushittyList[i]){
 					case "freeplay":
 						menuItem.setPosition(shitJson.secondItemX, shitJson.secondItemY);
@@ -233,10 +227,9 @@ class MainMenuState extends MusicBeatState
 					case "options":
 						menuItem.setPosition(shitJson.fourItemX, shitJson.fourItemY);
 					case "browser":
-						menuItem.setPosition(shitJson.secondItemX + 380, shitJson.secondItemY);
+						menuItem.setPosition(shitJson.secondItemX + 780, shitJson.secondItemY - 35);
 				}
-			}
-
+			#end
 		}
 
 		// FlxG.camera.follow(camFollowPos, null, 1); //i removed that
@@ -367,9 +360,10 @@ class MainMenuState extends MusicBeatState
 			}
 
 			for(what in menuItems.members){
-				if(FlxG.mouse.overlaps(what)){
+				if(FlxG.mouse.overlaps(what)){					
 
 					curSelected = menuItems.members.indexOf(what);
+
 
 					if(FlxG.mouse.pressed){
 						selectedSomethin = true;
@@ -402,39 +396,27 @@ class MainMenuState extends MusicBeatState
 											FlxTween.tween(spr, {x: shitJson.selectedX, y: shitJson.selectedY}, 1.2, {ease:FlxEase.circInOut, onComplete:function(twnShit:FlxTween){
 												MusicBeatState.switchState(new options.OptionsState());
 											}});
-										}
-								}else{
-									switch (chooseItem) {
-										case 'freeplay':
-											FlxTween.tween(spr, {x: shitJson.selectedX, y: shitJson.selectedY}, 1.2, {ease:FlxEase.circInOut, onComplete:function(twnShit:FlxTween){
-												MusicBeatState.switchState(new FreeplayState());
-											}});
-										case 'credits':
-											FlxTween.tween(spr, {x: shitJson.selectedX, y: shitJson.selectedY}, 1.2, {ease:FlxEase.circInOut, onComplete:function(twnShit:FlxTween){
-												MusicBeatState.switchState(new CreditsState());
-											}});
-										case 'options':
-											FlxTween.tween(spr, {x: shitJson.selectedX, y: shitJson.selectedY}, 1.2, {ease:FlxEase.circInOut, onComplete:function(twnShit:FlxTween){
-												MusicBeatState.switchState(new options.OptionsState());
-											}});
+									#if web
 										case 'browser':
-											if(FlxG.keys.justPressed.SHIFT){
-												//new state shit for iframe LOLS
-												//selectedSomethin = true;
-												FlxG.sound.play(Paths.sound('confirmMenu'));
-												// MusicBeatState.switchState(new IframeState());
-											}else{
-												FlxG.openURL('notYet.com/what_thefuck');
-												MusicBeatState.resetState();
-												// what	
-											}
-									}
+											FlxG.openURL('https://gamebanana.com/mods/607886');
+											MusicBeatState.resetState();
+									#end
+										}
+
 								}
 							}
 						});
 					}
 				}
 			}
+
+			menuItems.forEach(function(spr:FlxSprite){
+				if(FlxG.mouse.overlaps(spr)){
+					FlxG.mouse.load(("assets/images/input/overlapsCursor.png"), 1);
+				}else{
+					FlxG.mouse.load(("assets/images/input/cursor.png"), 1);
+				}
+			});
 
 			if(FlxG.keys.justPressed.SHIFT){
 				selectedSomethin = true;
